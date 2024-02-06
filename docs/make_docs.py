@@ -1,11 +1,11 @@
 """Script to make environment md"""
 
 import gym
-import neurogym as ngym
-from neurogym.utils.info import info, info_wrapper
+import ngym_foraging as ngym
+from ngym_foraging.utils.info import info, info_wrapper
 
 
-SOURCE_ROOT = 'https://github.com/gyyang/neurogym/blob/master/'
+SOURCE_ROOT = 'https://github.com/gyyang/ngym_foraging/blob/master/'
 
 
 def add_link(text, link):

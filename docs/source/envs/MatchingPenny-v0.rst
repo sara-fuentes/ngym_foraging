@@ -1,6 +1,6 @@
 MatchingPenny-v0
 --------------------------------------------------
-.. autoclass:: neurogym.envs.matchingpenny.MatchingPenny
+.. autoclass:: ngym_foraging.envs.matchingpenny.MatchingPenny
     :members:
     :exclude-members: new_trial
 

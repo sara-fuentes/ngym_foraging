@@ -12,14 +12,14 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../neurogym'))
+sys.path.insert(0, os.path.abspath('../ngym_foraging'))
 sys.path.append(os.path.abspath('./'))
 
 import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
-project = 'neurogym'
+project = 'ngym_foraging'
 copyright = '2020, Manuel Molano, Guangyu Robert Yang, & contributors'
 author = 'Manuel Molano, Guangyu Robert Yang, & contributors'
 
@@ -66,7 +66,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '**.ipynb_checkpoints']
 # html_theme = 'alabaster'
 html_theme = 'sphinx_rtd_theme'
 
-html_logo = '_static/img/neurogym_logo.svg'
+html_logo = '_static/img/ngym_foraging_logo.svg'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

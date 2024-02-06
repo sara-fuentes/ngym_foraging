@@ -1,6 +1,6 @@
 ChangingEnvironment-v0
 --------------------------------------------------
-.. autoclass:: neurogym.envs.changingenvironment.ChangingEnvironment
+.. autoclass:: ngym_foraging.envs.changingenvironment.ChangingEnvironment
     :members:
     :exclude-members: new_trial
 

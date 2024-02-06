@@ -1,9 +1,9 @@
-.. neurogym documentation master file, created by
+.. ngym_foraging documentation master file, created by
    sphinx-quickstart on Fri Mar 13 22:38:26 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to neurogym's documentation!
+Welcome to ngym_foraging's documentation!
 ====================================
 
 NeuroGym is a curated collection of neuroscience tasks with a common interface.
@@ -19,9 +19,9 @@ The goal is to facilitate training of neural network models on neuroscience task
     :caption: Examples
     :maxdepth: 1
 
-    example_neurogym_rl
-    example_neurogym_pytorch
-    example_neurogym_keras
+    example_ngym_foraging_rl
+    example_ngym_foraging_pytorch
+    example_ngym_foraging_keras
 
 .. toctree::
     :maxdepth: 1
@@ -36,7 +36,7 @@ The goal is to facilitate training of neural network models on neuroscience task
     :caption: Contributing
 
     contributors
-    understanding_neurogym_task
+    understanding_ngym_foraging_task
 
 
 

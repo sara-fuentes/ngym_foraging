@@ -1,6 +1,6 @@
 CVLearning-v0
 --------------------------------------------------
-.. autoclass:: neurogym.envs.cv_learning.CVLearning
+.. autoclass:: ngym_foraging.envs.cv_learning.CVLearning
     :members:
     :exclude-members: new_trial
 

@@ -1,6 +1,6 @@
 Pneumostomeopening-v0
 --------------------------------------------------
-.. autoclass:: neurogym.envs.pneumostomeopening.Pneumostomeopening
+.. autoclass:: ngym_foraging.envs.pneumostomeopening.Pneumostomeopening
     :members:
     :exclude-members: new_trial
 

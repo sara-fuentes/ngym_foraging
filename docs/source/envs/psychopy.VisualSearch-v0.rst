@@ -1,6 +1,6 @@
 psychopy.VisualSearch-v0
 --------------------------------------------------
-.. autoclass:: neurogym.envs.psychopy.visualsearch.VisualSearch
+.. autoclass:: ngym_foraging.envs.psychopy.visualsearch.VisualSearch
     :members:
     :exclude-members: new_trial
 

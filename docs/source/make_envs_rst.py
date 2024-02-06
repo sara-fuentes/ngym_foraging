@@ -6,9 +6,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import gym
-import neurogym as ngym
-from neurogym.envs.registration import ALL_ENVS
-from neurogym.wrappers import ALL_WRAPPERS
+import ngym_foraging as ngym
+from ngym_foraging.envs.registration import ALL_ENVS
+from ngym_foraging.wrappers import ALL_WRAPPERS
 
 
 ENV_IGNORE = ['Null-v0']
@@ -30,8 +30,8 @@ def make_env_images():
         plt.close()
 
 
-SUPERVISEDURL = 'neurogym/ngym_usage/blob/master/training/auto_notebooks/supervised/'
-RLURL = 'neurogym/ngym_usage/blob/master/training/auto_notebooks/rl/'
+SUPERVISEDURL = 'ngym_foraging/ngym_usage/blob/master/training/auto_notebooks/supervised/'
+RLURL = 'ngym_foraging/ngym_usage/blob/master/training/auto_notebooks/rl/'
 COLABURL = 'https://colab.research.google.com/github/'
 
 

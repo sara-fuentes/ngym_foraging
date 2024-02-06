@@ -4,8 +4,8 @@
 
 import numpy as np
 
-import neurogym as ngym
-from neurogym import spaces
+import ngym_foraging as ngym
+from ngym_foraging import spaces
 
 
 class YourTask(ngym.TrialEnv):
