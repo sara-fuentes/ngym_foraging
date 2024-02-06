@@ -87,7 +87,7 @@ fail : -0.1
   
 Tags: [perceptual](#perceptual), [working memory](#working-memory), [delayed response](#delayed-response), [steps action space](#steps-action-space)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/anglereproduction.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/anglereproduction.py)
 
 ___
 
@@ -114,7 +114,7 @@ fail : -0.1
   
 Tags: [perceptual](#perceptual), [steps action space](#steps-action-space)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/antireach.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/antireach.py)
 
 ___
 
@@ -138,7 +138,7 @@ correct : 1.0
   
 Tags: [n-alternative](#n-alternative), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/bandit.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/bandit.py)
 
 ___
 
@@ -177,7 +177,7 @@ fail : -1.0
   
 Tags: [perceptual](#perceptual), [delayed response](#delayed-response), [two-alternative](#two-alternative), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/cv_learning.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/cv_learning.py)
 
 ___
 
@@ -210,7 +210,7 @@ fail : 0.0
   
 Tags: [perceptual](#perceptual), [two-alternative](#two-alternative), [supervised](#supervised), [context dependent](#context-dependent)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/changingenvironment.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/changingenvironment.py)
 
 ___
 
@@ -239,7 +239,7 @@ correct : 1.0
   
 Tags: [perceptual](#perceptual), [context dependent](#context-dependent), [two-alternative](#two-alternative), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/contextdecisionmaking.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/contextdecisionmaking.py)
 
 ___
 
@@ -264,7 +264,7 @@ correct : 1.0
   
 Tags: [two-alternative](#two-alternative)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/dawtwostep.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/dawtwostep.py)
 
 ___
 
@@ -297,7 +297,7 @@ miss : 0.0
   
 Tags: [perceptual](#perceptual), [working memory](#working-memory), [go-no-go](#go-no-go), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/delaypairedassociation.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/delaypairedassociation.py)
 
 ___
 
@@ -330,7 +330,7 @@ fail : 0.0
   
 Tags: [perceptual](#perceptual), [working memory](#working-memory), [two-alternative](#two-alternative), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/delayedcomparison.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/delayedcomparison.py)
 
 ___
 
@@ -361,7 +361,7 @@ fail : 0.0
   
 Tags: [perceptual](#perceptual), [working memory](#working-memory), [two-alternative](#two-alternative), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/delaymatchcategory.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/delaymatchcategory.py)
 
 ___
 
@@ -393,7 +393,7 @@ fail : 0.0
   
 Tags: [perceptual](#perceptual), [working memory](#working-memory), [two-alternative](#two-alternative), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/delaymatchsample.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/delaymatchsample.py)
 
 ___
 
@@ -427,7 +427,7 @@ fail : -1.0
   
 Tags: [perceptual](#perceptual), [working memory](#working-memory), [two-alternative](#two-alternative), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/delaymatchsample.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/delaymatchsample.py)
 
 ___
 
@@ -459,7 +459,7 @@ miss : -1
   
 Tags: [perceptual](#perceptual), [reaction time](#reaction-time), [go-no-go](#go-no-go), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/detection.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/detection.py)
 
 ___
 
@@ -485,7 +485,7 @@ correct : 0.22
   
 Tags: [perceptual](#perceptual), [value-based](#value-based)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/economicdecisionmaking.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/economicdecisionmaking.py)
 
 ___
 
@@ -514,7 +514,7 @@ miss : -0.5
   
 Tags: [delayed response](#delayed-response), [go-no-go](#go-no-go), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/gonogo.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/gonogo.py)
 
 ___
 
@@ -544,7 +544,7 @@ fail : 0.0
   
 Tags: [timing](#timing), [working memory](#working-memory), [delayed response](#delayed-response), [two-alternative](#two-alternative), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/intervaldiscrimination.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/intervaldiscrimination.py)
 
 ___
 
@@ -568,7 +568,7 @@ fail : 0.0
   
 Tags: [two-alternative](#two-alternative), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/matchingpenny.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/matchingpenny.py)
 
 ___
 
@@ -600,7 +600,7 @@ fail : 0.0
   
 Tags: [timing](#timing), [go-no-go](#go-no-go), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/readysetgo.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/readysetgo.py)
 
 ___
 
@@ -633,7 +633,7 @@ fail : 0.0
   
 Tags: [perceptual](#perceptual), [n-alternative](#n-alternative), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/nalt_perceptualdecisionmaking.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/nalt_perceptualdecisionmaking.py)
 
 ___
 
@@ -666,7 +666,7 @@ fail : 0.0
   
 Tags: [perceptual](#perceptual), [two-alternative](#two-alternative), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/perceptualdecisionmaking.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/perceptualdecisionmaking.py)
 
 ___
 
@@ -701,7 +701,7 @@ stim_scale : Controls the difficulty of the experiment. (def: 1.)
   
 Tags: [perceptual](#perceptual), [delayed response](#delayed-response), [two-alternative](#two-alternative), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/perceptualdecisionmaking.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/perceptualdecisionmaking.py)
 
 ___
 
@@ -736,7 +736,7 @@ sure : 0.7
   
 Tags: [perceptual](#perceptual), [delayed response](#delayed-response), [confidence](#confidence)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/postdecisionwager.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/postdecisionwager.py)
 
 ___
 
@@ -762,7 +762,7 @@ fail : -0.1
   
 Tags: [motor](#motor), [steps action space](#steps-action-space)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/reaching.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/reaching.py)
 
 ___
 
@@ -791,7 +791,7 @@ fail : -0.1
   
 Tags: [motor](#motor), [steps action space](#steps-action-space)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/reaching.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/reaching.py)
 
 ___
 
@@ -820,7 +820,7 @@ miss : -0.5
   
 Tags: [perceptual](#perceptual), [delayed response](#delayed-response), [continuous action space](#continuous-action-space), [multidimensional action space](#multidimensional-action-space), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/reachingdelayresponse.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/reachingdelayresponse.py)
 
 ___
 
@@ -850,7 +850,7 @@ fail : 0.0
   
 Tags: [timing](#timing), [go-no-go](#go-no-go), [supervised](#supervised)
 
-[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/envs/readysetgo.py)
+[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/envs/readysetgo.py)
 
 ___
 

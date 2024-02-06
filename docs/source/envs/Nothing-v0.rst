@@ -1,6 +1,6 @@
 Nothing-v0
 --------------------------------------------------
-.. autoclass:: neurogym.envs.nothing.Nothing
+.. autoclass:: ngym_foraging.envs.nothing.Nothing
     :members:
     :exclude-members: new_trial
 

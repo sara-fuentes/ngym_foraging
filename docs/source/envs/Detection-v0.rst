@@ -1,6 +1,6 @@
 Detection-v0
 --------------------------------------------------
-.. autoclass:: neurogym.envs.detection.Detection
+.. autoclass:: ngym_foraging.envs.detection.Detection
     :members:
     :exclude-members: new_trial
 

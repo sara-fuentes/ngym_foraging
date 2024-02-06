@@ -1,6 +1,6 @@
 psychopy.SpatialSuppressMotion-v0
 --------------------------------------------------
-.. autoclass:: neurogym.envs.psychopy.spatialsuppressmotion.SpatialSuppressMotion
+.. autoclass:: ngym_foraging.envs.psychopy.spatialsuppressmotion.SpatialSuppressMotion
     :members:
     :exclude-members: new_trial
 

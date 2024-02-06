@@ -7,5 +7,5 @@ make_envs_rst.main()
 os.system('make html')
 # Open the index page
 os.system('open _build/html/index.html')
-# Requires neurogym and neurogym.github.io to be in the same directory
-os.system('cp -r ./_build/html/ ../../neurogym.github.io')
+# Requires ngym_foraging and ngym_foraging.github.io to be in the same directory
+os.system('cp -r ./_build/html/ ../../ngym_foraging.github.io')

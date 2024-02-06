@@ -5,7 +5,7 @@
 NeuroGym is a curated collection of neuroscience tasks with a common interface.
 The goal is to facilitate training of neural network models on neuroscience tasks. 
 
-Documentation: https://neurogym.github.io/
+Documentation: https://ngym_foraging.github.io/
 - [Installation](#Installation)
 - [Tasks](#Tasks)
 - [Wrappers](#Wrappers)
@@ -22,36 +22,36 @@ The toolkit also includes various modifier functions that allow easy configurati
 
 ### Installation
 
-You can perform a minimal install of ``neurogym`` with:
+You can perform a minimal install of ``ngym_foraging`` with:
 
-    git clone https://github.com/neurogym/neurogym.git
-    cd neurogym
+    git clone https://github.com/ngym_foraging/ngym_foraging.git
+    cd ngym_foraging
     pip install -e .
     
 Or a full install by replacing the last command with ``pip install -e '.[all]'``
 
 ### Tasks
-Currently implemented tasks can be found [here](https://github.com/gyyang/neurogym/blob/master/docs/envs.md).
+Currently implemented tasks can be found [here](https://github.com/gyyang/ngym_foraging/blob/master/docs/envs.md).
 
 ### Wrappers
-Wrappers (see [list](https://github.com/gyyang/neurogym/blob/master/docs/wrappers.md))
+Wrappers (see [list](https://github.com/gyyang/ngym_foraging/blob/master/docs/wrappers.md))
 are short scripts that allow introducing modifications the original tasks. For instance, the Random Dots Motion task can be transformed into a reaction time task by passing it through the *reaction_time* wrapper. Alternatively, the *combine* wrapper allows training an agent in two different tasks simultaneously. 
 
 ### Examples
 
 NeuroGym is compatible with most packages that use OpenAI gym. 
-In this [example](https://github.com/gyyang/neurogym/blob/master/examples/example_neurogym_rl.ipynb) jupyter notebook we show how to train
+In this [example](https://github.com/gyyang/ngym_foraging/blob/master/examples/example_ngym_foraging_rl.ipynb) jupyter notebook we show how to train
 a neural network with reinforcement learning algorithms using the 
 [Stable Baselines](https://github.com/hill-a/stable-baselines) toolbox.
 
 
 ### Contributing
 Contributing new tasks should be easy. You can contribute tasks using the regular OpenAI gym format. If your task has a trial/period structure,
-this [template](https://github.com/gyyang/neurogym/blob/master/examples/template.py) provides the basic structure that we recommend a task to have:
+this [template](https://github.com/gyyang/ngym_foraging/blob/master/examples/template.py) provides the basic structure that we recommend a task to have:
 
 ```
 from gym import spaces
-import neurogym as ngym
+import ngym_foraging as ngym
 
 class YourTask(ngym.PeriodEnv):
     metadata = {}
