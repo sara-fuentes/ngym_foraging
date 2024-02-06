@@ -23,34 +23,32 @@ class Foraging(ngym.TrialEnv):
         'tags': ['perceptual', 'two-alternative', 'supervised']
     }
 
-    def __init__(self, dt=100, rewards=None, timing=None, cohs=None,
+    def __init__(self, dt=100, rewards=None, timing=None, probs=None, 
                  sigma=1.0, dim_ring=2):
         super().__init__(dt=dt)
-        if cohs is None:
-            self.cohs = np.array([0, 6.4, 12.8, 25.6, 51.2])
-        else:
-            self.cohs = cohs
+
         self.sigma = sigma / np.sqrt(self.dt)  # Input noise
 
         # Rewards
-        self.rewards = {'abort': -0.1, 'correct': +1., 'fail': 0.}
+        self.abort = False
+        self.rewards = {'abort': -0.1, 'correct': +1.}
         if rewards:
             self.rewards.update(rewards)
 
         self.timing = {
-            'ITI': 100,
-            'decision': 2}
+            'ITI': ngym.random.TruncExp(600, 300, 3000),
+            'decision': 200}
         if timing:
             self.timing.update(timing)
-
-        self.abort = False
 
         self.theta = np.linspace(0, 2*np.pi, dim_ring+1)[:-1]
         self.choices = np.arange(dim_ring)
 
-        name = {'fixation': 0, 'stimulus': range(1, dim_ring+1)}
+        self.probs = probs or np.ones(dim_ring)/dim_ring
+
+        name = {'ITI': 0}
         self.observation_space = spaces.Box(
-            -np.inf, np.inf, shape=(1+dim_ring,), dtype=np.float32, name=name)
+            -np.inf, np.inf, shape=(1,), dtype=np.float32, name=name)
         name = {'fixation': 0, 'choice': range(1, dim_ring+1)}
         self.action_space = spaces.Discrete(1+dim_ring, name=name)
 
