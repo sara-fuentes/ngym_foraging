@@ -1,6 +1,6 @@
 NAltPerceptualDecisionMaking-v0
 --------------------------------------------------
-.. autoclass:: ngym_foraging.envs.nalt_perceptualdecisionmaking.nalt_PerceptualDecisionMaking
+.. autoclass:: neurogym.envs.nalt_perceptualdecisionmaking.nalt_PerceptualDecisionMaking
     :members:
     :exclude-members: new_trial
 

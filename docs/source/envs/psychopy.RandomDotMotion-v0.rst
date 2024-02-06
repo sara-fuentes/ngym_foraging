@@ -1,6 +1,6 @@
 psychopy.RandomDotMotion-v0
 --------------------------------------------------
-.. autoclass:: ngym_foraging.envs.psychopy.perceptualdecisionmaking.RandomDotMotion
+.. autoclass:: neurogym.envs.psychopy.perceptualdecisionmaking.RandomDotMotion
     :members:
     :exclude-members: new_trial
 

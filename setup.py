@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 import sys
 import os
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'ngym_foraging'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'neurogym'))
 from version import VERSION
 
 
@@ -26,9 +26,9 @@ extras['dev'] = extras['all'] + [
     'nbsphinx'
 ]
 
-setup(name='ngym_foraging',
+setup(name='neurogym',
       packages=[package for package in find_packages()
-                if package.startswith('ngym_foraging')],
+                if package.startswith('neurogym')],
       install_requires=[
           'numpy',
           'gym',
@@ -37,6 +37,6 @@ setup(name='ngym_foraging',
       extras_require=extras,
       description='NeuroGym: Gym-style cognitive neuroscience tasks',
       author='Manuel Molano, Guangyu Robert Yang, and contributors',
-      url='https://github.com/ngym_foraging/ngym_foraging',
+      url='https://github.com/neurogym/neurogym',
       version=VERSION)
 

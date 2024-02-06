@@ -2,10 +2,10 @@
 Installation
 ************
 
-You can perform a minimal install of ``ngym_foraging`` with:
+You can perform a minimal install of ``neurogym`` with:
 
 .. code:: console
 
-    git clone https://github.com/gyyang/ngym_foraging.git
-    cd ngym_foraging
+    git clone https://github.com/gyyang/neurogym.git
+    cd neurogym
     pip install -e .

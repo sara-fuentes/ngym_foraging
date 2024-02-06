@@ -1,6 +1,6 @@
 PostDecisionWager-v0
 --------------------------------------------------
-.. autoclass:: ngym_foraging.envs.postdecisionwager.PostDecisionWager
+.. autoclass:: neurogym.envs.postdecisionwager.PostDecisionWager
     :members:
     :exclude-members: new_trial
 
@@ -11,8 +11,8 @@ PostDecisionWager-v0
         :ref:`tag-perceptual`,         :ref:`tag-delayed response`,         :ref:`tag-confidence`
 
     Reinforcement learning and analysis of this task
-        `[Open in colab] <https://colab.research.google.com/github/ngym_foraging/ngym_usage/blob/master/training/auto_notebooks/rl/PostDecisionWager-v0.ipynb>`_
-        `[Jupyter notebook Source] <https://github.com/ngym_foraging/ngym_usage/blob/master/training/auto_notebooks/rl/PostDecisionWager-v0.ipynb>`_
+        `[Open in colab] <https://colab.research.google.com/github/neurogym/ngym_usage/blob/master/training/auto_notebooks/rl/PostDecisionWager-v0.ipynb>`_
+        `[Jupyter notebook Source] <https://github.com/neurogym/ngym_usage/blob/master/training/auto_notebooks/rl/PostDecisionWager-v0.ipynb>`_
     Sample run
         .. image:: ../_static/PostDecisionWager-v0_examplerun.png
             :width: 600

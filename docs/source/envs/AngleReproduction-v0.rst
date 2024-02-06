@@ -1,6 +1,6 @@
 AngleReproduction-v0
 --------------------------------------------------
-.. autoclass:: ngym_foraging.envs.anglereproduction.AngleReproduction
+.. autoclass:: neurogym.envs.anglereproduction.AngleReproduction
     :members:
     :exclude-members: new_trial
 

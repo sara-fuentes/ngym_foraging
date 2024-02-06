@@ -1,6 +1,6 @@
 AntiReach-v0
 --------------------------------------------------
-.. autoclass:: ngym_foraging.envs.antireach.AntiReach
+.. autoclass:: neurogym.envs.antireach.AntiReach
     :members:
     :exclude-members: new_trial
 
@@ -11,8 +11,8 @@ AntiReach-v0
         :ref:`tag-perceptual`,         :ref:`tag-steps action space`
 
     Reinforcement learning and analysis of this task
-        `[Open in colab] <https://colab.research.google.com/github/ngym_foraging/ngym_usage/blob/master/training/auto_notebooks/rl/AntiReach-v0.ipynb>`_
-        `[Jupyter notebook Source] <https://github.com/ngym_foraging/ngym_usage/blob/master/training/auto_notebooks/rl/AntiReach-v0.ipynb>`_
+        `[Open in colab] <https://colab.research.google.com/github/neurogym/ngym_usage/blob/master/training/auto_notebooks/rl/AntiReach-v0.ipynb>`_
+        `[Jupyter notebook Source] <https://github.com/neurogym/ngym_usage/blob/master/training/auto_notebooks/rl/AntiReach-v0.ipynb>`_
     Sample run
         .. image:: ../_static/AntiReach-v0_examplerun.png
             :width: 600

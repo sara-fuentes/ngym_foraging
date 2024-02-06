@@ -1,1 +1,0 @@
-from ngym_foraging.utils.plotting import plot_env

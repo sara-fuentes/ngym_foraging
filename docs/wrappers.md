@@ -30,7 +30,7 @@ ___
   
 Logic: Introduces catch trials in which the reward for a correct choice is modified (e.g. is set to the reward for an incorrect choice). Note that the wrapper only changes the reward associated to a correct answer and does not change the ground truth. Thus, the catch trial affect a pure supervised learning setting.  
   
-[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/wrappers/catch_trials.py)
+[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/wrappers/catch_trials.py)
 
 ___
 
@@ -42,7 +42,7 @@ Reference paper
   
 [Response outcomes gate the impact of expectations on perceptual decisions](https://www.biorxiv.org/content/10.1101/433409v3)  
   
-[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/wrappers/combine.py)
+[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/wrappers/combine.py)
 
 ___
 
@@ -50,7 +50,7 @@ ___
   
 Logic: Add a negative reward if a trial ends with no action.  
   
-[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/wrappers/miss_trials_reward.py)
+[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/wrappers/miss_trials_reward.py)
 
 ___
 
@@ -58,7 +58,7 @@ ___
   
 Logic: Saves relevant behavioral information: rewards, actions, observations, new trial, ground truth.  
   
-[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/wrappers/monitor.py)
+[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/wrappers/monitor.py)
 
 ___
 
@@ -66,7 +66,7 @@ ___
   
 Logic: Add Gaussian noise to the observations.  
   
-[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/wrappers/noise.py)
+[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/wrappers/noise.py)
 
 ___
 
@@ -74,7 +74,7 @@ ___
   
 Logic: Modifies observation by adding the previous action.  
   
-[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/wrappers/pass_action.py)
+[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/wrappers/pass_action.py)
 
 ___
 
@@ -82,7 +82,7 @@ ___
   
 Logic: Modifies observation by adding the previous reward.  
   
-[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/wrappers/pass_reward.py)
+[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/wrappers/pass_reward.py)
 
 ___
 
@@ -90,7 +90,7 @@ ___
   
 Logic: Modifies a given environment by allowing the network to act at any time after the fixation period.  
   
-[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/wrappers/reaction_time.py)
+[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/wrappers/reaction_time.py)
 
 ___
 
@@ -98,7 +98,7 @@ ___
   
 Logic: Changes the probability of ground truth.  
   
-[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/wrappers/side_bias.py)
+[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/wrappers/side_bias.py)
 
 ___
 
@@ -106,7 +106,7 @@ ___
   
 Logic: Outputs extra pulses that will be non-zero during specified periods.  
   
-[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/wrappers/ttl_pulse.py)
+[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/wrappers/ttl_pulse.py)
 
 ___
 
@@ -118,5 +118,5 @@ Reference paper
   
 [Response outcomes gate the impact of expectations on perceptual decisions](https://www.biorxiv.org/content/10.1101/433409v3)  
   
-[Source](https://github.com/gyyang/ngym_foraging/blob/master/ngym_foraging/wrappers/trial_hist.py)
+[Source](https://github.com/gyyang/neurogym/blob/master/neurogym/wrappers/trial_hist.py)
 

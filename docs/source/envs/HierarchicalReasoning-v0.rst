@@ -1,6 +1,6 @@
 HierarchicalReasoning-v0
 --------------------------------------------------
-.. autoclass:: ngym_foraging.envs.hierarchicalreasoning.HierarchicalReasoning
+.. autoclass:: neurogym.envs.hierarchicalreasoning.HierarchicalReasoning
     :members:
     :exclude-members: new_trial
 
@@ -11,11 +11,11 @@ HierarchicalReasoning-v0
         :ref:`tag-perceptual`,         :ref:`tag-two-alternative`,         :ref:`tag-supervised`
 
     Supervised learning and analysis of this task
-        `[Open in colab] <https://colab.research.google.com/github/ngym_foraging/ngym_usage/blob/master/training/auto_notebooks/supervised/HierarchicalReasoning-v0.ipynb>`_
-        `[Jupyter notebook Source] <https://github.com/ngym_foraging/ngym_usage/blob/master/training/auto_notebooks/supervised/HierarchicalReasoning-v0.ipynb>`_
+        `[Open in colab] <https://colab.research.google.com/github/neurogym/ngym_usage/blob/master/training/auto_notebooks/supervised/HierarchicalReasoning-v0.ipynb>`_
+        `[Jupyter notebook Source] <https://github.com/neurogym/ngym_usage/blob/master/training/auto_notebooks/supervised/HierarchicalReasoning-v0.ipynb>`_
     Reinforcement learning and analysis of this task
-        `[Open in colab] <https://colab.research.google.com/github/ngym_foraging/ngym_usage/blob/master/training/auto_notebooks/rl/HierarchicalReasoning-v0.ipynb>`_
-        `[Jupyter notebook Source] <https://github.com/ngym_foraging/ngym_usage/blob/master/training/auto_notebooks/rl/HierarchicalReasoning-v0.ipynb>`_
+        `[Open in colab] <https://colab.research.google.com/github/neurogym/ngym_usage/blob/master/training/auto_notebooks/rl/HierarchicalReasoning-v0.ipynb>`_
+        `[Jupyter notebook Source] <https://github.com/neurogym/ngym_usage/blob/master/training/auto_notebooks/rl/HierarchicalReasoning-v0.ipynb>`_
     Sample run
         .. image:: ../_static/HierarchicalReasoning-v0_examplerun.png
             :width: 600
