@@ -25,6 +25,7 @@ class Foraging(ngym.TrialEnv):
 
     def __init__(self, dt=100, rewards=None, timing=None, probs=None, 
                  sigma=1.0, dim_ring=2):
+        # Initialize parent class with decision time step
         super().__init__(dt=dt)
 
         self.sigma = sigma / np.sqrt(self.dt)  # Input noise
@@ -35,18 +36,20 @@ class Foraging(ngym.TrialEnv):
         if rewards:
             self.rewards.update(rewards)
 
+        # Define trial timing, with default and customizable options
         self.timing = {
-            'ITI': ngym.random.TruncExp(600, 300, 3000),
-            'decision': 200}
-        if timing:
+            'ITI': ngym.random.TruncExp(600, 300, 3000), # ITI with truncated exponential distribution
+            'decision': 200} # Decision period
+        if timing: # Allow custom timing
             self.timing.update(timing)
 
-        self.theta = np.linspace(0, 2*np.pi, dim_ring+1)[:-1]
-        self.choices = np.arange(dim_ring)
+        # # Initialize stimulus properties
+        # self.theta = np.linspace(0, 2*np.pi, dim_ring+1)[:-1] # Divide a circle into equal parts based on dim_ring
+        # self.choices = np.arange(dim_ring) # possible choices 
+        # self.probs = probs or np.ones(dim_ring)/dim_ring # Uniform probability across choices unless specified
 
-        self.probs = probs or np.ones(dim_ring)/dim_ring
-
-        name = {'ITI': 0}
+        # Define observations and action spaces
+        name = {'ITI': 0}  # <----????
         self.observation_space = spaces.Box(
             -np.inf, np.inf, shape=(1,), dtype=np.float32, name=name)
         name = {'fixation': 0, 'choice': range(1, dim_ring+1)}
@@ -64,31 +67,26 @@ class Foraging(ngym.TrialEnv):
             obs: observation
         """
         # Trial info
-        trial = {
-            'ground_truth': self.rng.choice(self.choices),
-            'coh': self.rng.choice(self.cohs),
-        }
-        trial.update(kwargs)
+        # Randomly select ground truth and coherence for the trial
+        # trial = {
+        #     'ground_truth': self.rng.choice(self.choices),
+        #     'coh': self.rng.choice(self.cohs),
+        # }
+        # trial.update(kwargs) # Update trial with any additional parameters
 
-        coh = trial['coh']
-        ground_truth = trial['ground_truth']
-        stim_theta = self.theta[ground_truth]
+        # Define trial periods
+        self.add_period(['ITI', 'decision'])
 
-        # Periods
-        self.add_period(['fixation', 'stimulus', 'delay', 'decision'])
-
-        # Observations
-        self.add_ob(1, period=['fixation', 'stimulus', 'delay'], where='fixation')
-        stim = np.cos(self.theta - stim_theta) * (coh/200) + 0.5
-        self.add_ob(stim, 'stimulus', where='stimulus')
-        self.add_randn(0, self.sigma, 'stimulus', where='stimulus')
-
-        # Ground truth
-        self.set_groundtruth(ground_truth, period='decision', where='choice')
+        # Generate observations for each period
+        self.add_ob(1, period=['ITI', 'stimulus'], where='ITI')
+   
+        # Set the correct response for the decision period
+        self.set_groundtruth(ground_truth, period='decision', where='decision') # <------??
 
         return trial
 
-    def _step(self, action):
+    def _step(self, action): # processes the agent's action and updates the
+        # environment's state
         """
         _step receives an action and returns:
             a new observation, obs
@@ -103,7 +101,7 @@ class Foraging(ngym.TrialEnv):
         reward = 0
         gt = self.gt_now
         # observations
-        if self.in_period('fixation'):
+        if self.in_period('ITI'):
             if action != 0:  # action = 0 means fixating
                 new_trial = self.abort
                 reward += self.rewards['abort']
@@ -120,7 +118,7 @@ class Foraging(ngym.TrialEnv):
 
 
 #  TODO: there should be a timeout of 1000ms for incorrect trials
-class PerceptualDecisionMakingDelayResponse(ngym.TrialEnv):
+class Foraging(ngym.TrialEnv):
     """Perceptual decision-making with delayed responses.
 
     Agents have to integrate two stimuli and report which one is
