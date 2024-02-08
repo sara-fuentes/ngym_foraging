@@ -6,7 +6,7 @@ import numpy as np
 import ngym_foraging as ngym
 from ngym_foraging import spaces
 
-
+# TODO: change docstrings and comments
 class Foraging(ngym.TrialEnv):
     """
 
@@ -43,17 +43,18 @@ class Foraging(ngym.TrialEnv):
         if timing: # Allow custom timing
             self.timing.update(timing)
 
-        # # Initialize stimulus properties
-        # self.theta = np.linspace(0, 2*np.pi, dim_ring+1)[:-1] # Divide a circle into equal parts based on dim_ring
-        # self.choices = np.arange(dim_ring) # possible choices 
-        # self.probs = probs or np.ones(dim_ring)/dim_ring # Uniform probability across choices unless specified
+        # Initialize choices
+        self.choices = np.arange(dim_ring) # possible choices 
+        # Initialize probs
+        self.probs = probs or np.ones(dim_ring)/dim_ring # Uniform probability across choices unless specified
 
         # Define observations and action spaces
-        name = {'ITI': 0}  # <----????
+        name = {'ITI': 0}  
         self.observation_space = spaces.Box(
-            -np.inf, np.inf, shape=(1,), dtype=np.float32, name=name)
+            -np.inf, np.inf, shape=(1,), dtype=np.float32, name=name) # ???
+        # TODO: add no_action for ITI period, add fixation period to timing
         name = {'fixation': 0, 'choice': range(1, dim_ring+1)}
-        self.action_space = spaces.Discrete(1+dim_ring, name=name)
+        self.action_space = spaces.Discrete(1+dim_ring, name=name) 
 
     def _new_trial(self, **kwargs):
         """
@@ -67,21 +68,24 @@ class Foraging(ngym.TrialEnv):
             obs: observation
         """
         # Trial info
-        # Randomly select ground truth and coherence for the trial
-        # trial = {
-        #     'ground_truth': self.rng.choice(self.choices),
-        #     'coh': self.rng.choice(self.cohs),
-        # }
-        # trial.update(kwargs) # Update trial with any additional parameters
+        trial = {
+            'ground_truth': self.choices[np.where(np.max(self.probs)==self.probs)[0]]
+        
+        }
+        trial.update(kwargs) # Update trial with any additional parameters
+
+        ground_truth = trial['ground_truth']
 
         # Define trial periods
         self.add_period(['ITI', 'decision'])
 
         # Generate observations for each period
-        self.add_ob(1, period=['ITI', 'stimulus'], where='ITI')
+        self.add_ob(0, period=['ITI'], where='ITI')
+        self.add_ob(1, period=['decision'], where='ITI')
+
    
         # Set the correct response for the decision period
-        self.set_groundtruth(ground_truth, period='decision', where='decision') # <------??
+        self.set_groundtruth(ground_truth, period='decision', where='ITI') 
 
         return trial
 
@@ -107,219 +111,12 @@ class Foraging(ngym.TrialEnv):
                 reward += self.rewards['abort']
         elif self.in_period('decision'):
             if action != 0:
-                new_trial = True
+                new_trial = True 
                 if action == gt:
-                    reward += self.rewards['correct']
-                    self.performance = 1
-                else:
-                    reward += self.rewards['fail']
+                    self.performance = 1 #?
+                    reward += self.
+
 
         return self.ob_now, reward, False, {'new_trial': new_trial, 'gt': gt}
 
 
-#  TODO: there should be a timeout of 1000ms for incorrect trials
-class Foraging(ngym.TrialEnv):
-    """Perceptual decision-making with delayed responses.
-
-    Agents have to integrate two stimuli and report which one is
-    larger on average after a delay.
-
-    Args:
-        stim_scale: Controls the difficulty of the experiment. (def: 1., float)
-    """
-    metadata = {
-        'paper_link': 'https://www.nature.com/articles/s41586-019-0919-7',
-        'paper_name': 'Discrete attractor dynamics underlies persistent' +
-        ' activity in the frontal cortex',
-        'tags': ['perceptual', 'delayed response', 'two-alternative',
-                 'supervised']
-    }
-
-    def __init__(self, dt=100, rewards=None, timing=None, stim_scale=1.,
-                 sigma=1.0):
-        super().__init__(dt=dt)
-        self.choices = [1, 2]
-        # cohs specifies the amount of evidence (modulated by stim_scale)
-        self.cohs = np.array([0, 6.4, 12.8, 25.6, 51.2])*stim_scale
-        self.sigma = sigma / np.sqrt(self.dt)  # Input noise
-
-        # Rewards
-        self.rewards = {'abort': -0.1, 'correct': +1.,
-                        'fail': 0.}
-        if rewards:
-            self.rewards.update(rewards)
-
-        self.timing = {
-            'fixation': 0,
-            'stimulus': 1150,
-            #  TODO: sampling of delays follows exponential
-            'delay':(300, 500, 700, 900, 1200, 2000, 3200, 4000),
-            # 'go_cue': 100, # TODO: Not implemented
-            'decision': 1500}
-        if timing:
-            self.timing.update(timing)
-
-        self.abort = False
-
-        # action and observation spaces
-        self.action_space = spaces.Discrete(3)
-        self.observation_space = spaces.Box(-np.inf, np.inf, shape=(3,),
-                                            dtype=np.float32)
-
-    def _new_trial(self, **kwargs):
-        # ---------------------------------------------------------------------
-        # Trial
-        # ---------------------------------------------------------------------
-        trial = {
-            'ground_truth': self.rng.choice(self.choices),
-            'coh': self.rng.choice(self.cohs),
-            'sigma': self.sigma,
-        }
-        trial.update(kwargs)
-
-        # ---------------------------------------------------------------------
-        # Periods
-        # ---------------------------------------------------------------------
-        periods = ['fixation', 'stimulus', 'delay', 'decision']
-        self.add_period(periods)
-
-        # define observations
-        self.set_ob([1, 0, 0], 'fixation')
-        stim = self.view_ob('stimulus')
-        stim[:, 0] = 1
-        stim[:, 1:] = (1 - trial['coh']/100)/2
-        stim[:, trial['ground_truth']] = (1 + trial['coh']/100)/2
-        stim[:, 1:] +=\
-            self.rng.randn(stim.shape[0], 2) * trial['sigma']
-
-        self.set_ob([1, 0, 0], 'delay')
-
-        self.set_groundtruth(trial['ground_truth'], 'decision')
-
-        return trial
-
-    def _step(self, action):
-        # ---------------------------------------------------------------------
-        # Reward and observations
-        # ---------------------------------------------------------------------
-        new_trial = False
-        # rewards
-        reward = 0
-        # observations
-        gt = self.gt_now
-
-        if self.in_period('fixation'):
-            if action != 0:
-                new_trial = self.abort
-                reward = self.rewards['abort']
-        elif self.in_period('decision') and action != 0:
-            new_trial = True
-            if action == gt:
-                reward = self.rewards['correct']
-                self.performance = 1
-            elif action == 3 - gt:  # 3-action is the other act
-                reward = self.rewards['fail']
-
-        info = {'new_trial': new_trial, 'gt': gt}
-        return self.ob_now, reward, False, info
-
-
-class PulseDecisionMaking(ngym.TrialEnv):
-    """Pulse-based decision making task.
-
-    Discrete stimuli are presented briefly as pulses.
-
-    Args:
-        p_pulse: array-like, probability of pulses for each choice
-        n_bin: int, number of stimulus bins
-    """
-    metadata = {
-        'paper_link': 'https://elifesciences.org/articles/11308',
-        'paper_name': '''Sources of noise during accumulation of evidence in
-        unrestrained and voluntarily head-restrained rats''',
-        'tags': ['perceptual', 'two-alternative', 'supervised']
-    }
-
-    def __init__(self, dt=10, rewards=None, timing=None, p_pulse=(0.3, 0.7),
-                 n_bin=6):
-        super().__init__(dt=dt)
-        self.p_pulse = p_pulse
-        self.n_bin = n_bin
-
-        # Rewards
-        self.rewards = {'abort': -0.1, 'correct': +1., 'fail': 0.}
-        if rewards:
-            self.rewards.update(rewards)
-
-        self.timing = {
-            'fixation': 500,
-            'decision': 500}
-        for i in range(n_bin):
-            self.timing['cue' + str(i)] = 10
-            self.timing['bin' + str(i)] = 240
-        if timing:
-            self.timing.update(timing)
-
-        self.abort = False
-
-        name = {'fixation': 0, 'stimulus': [1, 2]}
-        self.observation_space = spaces.Box(
-            -np.inf, np.inf, shape=(3,), dtype=np.float32, name=name)
-        name = {'fixation': 0, 'choice': [1, 2]}
-        self.action_space = spaces.Discrete(3, name=name)
-
-
-    def _new_trial(self, **kwargs):
-        # Trial info
-        p1, p2 = self.p_pulse
-        if self.rng.rand() < 0.5:
-            p1, p2 = p2, p1
-        pulse1 = (self.rng.random(self.n_bin) < p1) * 1.0
-        pulse2 = (self.rng.random(self.n_bin) < p2) * 1.0
-        trial = {'pulse1': pulse1, 'pulse2': pulse2}
-        trial.update(kwargs)
-
-        n_pulse1 = sum(pulse1)
-        n_pulse2 = sum(pulse2) + self.rng.uniform(-0.1, 0.1)
-        ground_truth = int(n_pulse1 < n_pulse2)
-        trial['ground_truth'] = ground_truth
-
-        # Periods
-        periods = ['fixation']
-        for i in range(self.n_bin):
-            periods += ['cue' + str(i), 'bin' + str(i)]
-        periods += ['decision']
-        self.add_period(periods)
-
-        # Observations
-        self.add_ob(1, where='fixation')
-        for i in range(self.n_bin):
-            self.add_ob(pulse1[i], 'cue' + str(i), where=1)
-            self.add_ob(pulse2[i], 'cue' + str(i), where=2)
-        self.set_ob(0, 'decision')
-
-        # Ground truth
-        self.set_groundtruth(ground_truth, period='decision', where='choice')
-
-        return trial
-
-    def _step(self, action):
-        new_trial = False
-        # rewards
-        reward = 0
-        gt = self.gt_now
-        # observations
-        if self.in_period('decision'):
-            if action != 0:
-                new_trial = True
-                if action == gt:
-                    reward += self.rewards['correct']
-                    self.performance = 1
-                else:
-                    reward += self.rewards['fail']
-        else:
-            if action != 0:  # action = 0 means fixating
-                new_trial = self.abort
-                reward += self.rewards['abort']
-
-        return self.ob_now, reward, False, {'new_trial': new_trial, 'gt': gt}
