@@ -23,38 +23,38 @@ class Foraging(ngym.TrialEnv):
         'tags': ['perceptual', 'two-alternative', 'supervised']
     }
 
-    def __init__(self, dt=100, rewards=None, timing=None, probs=None, 
+    def __init__(self, dt=100, rewards=None, timing=None, probs=None,
                  sigma=1.0, dim_ring=2):
         # Initialize parent class with decision time step
         super().__init__(dt=dt)
-
+        # noise
         self.sigma = sigma / np.sqrt(self.dt)  # Input noise
 
-        # Rewards
         self.abort = False
-        self.rewards = {'abort': -0.1, 'correct': +1.}
-        if rewards:
+        # Rewards
+        self.rewards = {'abort': -0.1, 'fixation': 0.1, 'correct': +1.}
+        if rewards:  # Allow custom rewards
             self.rewards.update(rewards)
 
         # Define trial timing, with default and customizable options
         self.timing = {
-            'ITI': ngym.random.TruncExp(600, 300, 3000), # ITI with truncated exponential distribution
-            'decision': 200} # Decision period
-        if timing: # Allow custom timing
+            'ITI': ngym.random.TruncExp(600, 300, 3000),
+            'fixation': 200,
+            'decision': 200}  # Decision period
+        if timing:  # Allow custom timing
             self.timing.update(timing)
 
         # Initialize choices
-        self.choices = np.arange(dim_ring) # possible choices 
-        # Initialize probs
-        self.probs = probs or np.ones(dim_ring)/dim_ring # Uniform probability across choices unless specified
+        self.choices = np.arange(dim_ring)  # possible choices
+        # Initialize probs (default: uniform probability across choices)
+        self.probs = probs or np.ones(dim_ring)/dim_ring
 
-        # Define observations and action spaces
-        name = {'ITI': 0}  
-        self.observation_space = spaces.Box(
-            -np.inf, np.inf, shape=(1,), dtype=np.float32, name=name) # ???
-        # TODO: add no_action for ITI period, add fixation period to timing
-        name = {'fixation': 0, 'choice': range(1, dim_ring+1)}
-        self.action_space = spaces.Discrete(1+dim_ring, name=name) 
+        # Define observations
+        name = {'ITI': 0}
+        self.observation_space = spaces.Discrete(2, name=name)
+        # define action spaces
+        name = {'no_action': 0, 'fixation': 1, 'choice': range(2, dim_ring+2)}
+        self.action_space = spaces.Discrete(2+dim_ring, name=name)
 
     def _new_trial(self, **kwargs):
         """
@@ -67,30 +67,30 @@ class Foraging(ngym.TrialEnv):
             coh: stimulus coherence (evidence) for the trial
             obs: observation
         """
+        # TODO: allow modifying probs with kwargs
         # Trial info
-        trial = {
-            'ground_truth': self.choices[np.where(np.max(self.probs)==self.probs)[0]]
-        
-        }
-        trial.update(kwargs) # Update trial with any additional parameters
+        trial = {'probs': self.probs}
 
-        ground_truth = trial['ground_truth']
+        trial.update(kwargs)  # Update trial with any additional parameters
+
+        ground_truth =\
+            self.choices[np.where(np.max(trial['probs']) == trial['probs'])[0][0]]
 
         # Define trial periods
-        self.add_period(['ITI', 'decision'])
+        self.add_period(['ITI', 'fixation', 'decision'])
 
         # Generate observations for each period
         self.add_ob(0, period=['ITI'], where='ITI')
+        self.add_ob(1, period=['fixation'], where='ITI')
         self.add_ob(1, period=['decision'], where='ITI')
-
-   
         # Set the correct response for the decision period
-        self.set_groundtruth(ground_truth, period='decision', where='ITI') 
+        self.set_groundtruth(0, period='ITI')
+        self.set_groundtruth(1, period='fixation')
+        self.set_groundtruth(ground_truth, period='decision', where='choice')
 
         return trial
 
-    def _step(self, action): # processes the agent's action and updates the
-        # environment's state
+    def _step(self, action):  # processes agent's action and updates env's state
         """
         _step receives an action and returns:
             a new observation, obs
@@ -109,13 +109,17 @@ class Foraging(ngym.TrialEnv):
             if action != 0:  # action = 0 means fixating
                 new_trial = self.abort
                 reward += self.rewards['abort']
+        elif self.in_period('fixation'):
+            if action == 1:
+                reward += self.rewards['fixation']
         elif self.in_period('decision'):
-            if action != 0:
-                new_trial = True 
+            if action > 1:
+                new_trial = True
                 if action == gt:
-                    self.performance = 1 #?
-                    reward += self.
-
+                    self.performance = 1
+                rw_idx = np.where(self.action_space.name['choice'] == action)[0][0]
+                prob = self.trial['probs'][rw_idx]
+                reward += (self.rng.random() < prob) * self.rewards['correct']
 
         return self.ob_now, reward, False, {'new_trial': new_trial, 'gt': gt}
 
