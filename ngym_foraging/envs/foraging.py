@@ -117,7 +117,8 @@ class Foraging(ngym.TrialEnv):
                 new_trial = True
                 if action == gt:
                     self.performance = 1
-                rw_idx = np.where(self.action_space.name['choice'] == action)[0][0]
+                rw_idx =\
+                    np.where(self.action_space.name['choice'] == action)[0]
                 prob = self.trial['probs'][rw_idx]
                 reward += (self.rng.random() < prob) * self.rewards['correct']
 
