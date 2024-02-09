@@ -47,10 +47,10 @@ class Foraging(ngym.TrialEnv):
         # Initialize choices
         self.choices = np.arange(dim_ring)  # possible choices
         # Initialize probs (default: uniform probability across choices)
-        if probs is not None:
-            self.probs = probs
-        else:
+        if probs is None:
             self.probs = np.ones(dim_ring)/dim_ring
+        else:
+            self.probs = probs
 
         # Define observations
         name = {'fixation_cue': 0}
@@ -124,11 +124,9 @@ class Foraging(ngym.TrialEnv):
                 if action == gt:
                     self.performance = 1
                 rw_idx =\
-                    np.where(self.action_space.name['choice'] == action)
+                    np.where(self.action_space.name['choice'] == action)[0]
                 prob = self.trial['probs'][rw_idx]
                 reward += (self.rng.random() < prob) * self.rewards['correct']
-                if isinstance(prob, np.ndarray):
-                    print(1)
 
         return self.ob_now, reward, False, {'new_trial': new_trial, 'gt': gt}
 
