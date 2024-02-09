@@ -50,8 +50,8 @@ class Foraging(ngym.TrialEnv):
         self.probs = probs or np.ones(dim_ring)/dim_ring
 
         # Define observations
-        name = {'ITI': 0}
-        self.observation_space = spaces.Discrete(2, name=name)
+        name = {'fixation_cue': 0}
+        self.observation_space = spaces.Discrete(1, name=name)
         # define action spaces
         name = {'no_action': 0, 'fixation': 1, 'choice': range(2, dim_ring+2)}
         self.action_space = spaces.Discrete(2+dim_ring, name=name)
@@ -80,9 +80,11 @@ class Foraging(ngym.TrialEnv):
         self.add_period(['ITI', 'fixation', 'decision'])
 
         # Generate observations for each period
-        self.add_ob(0, period=['ITI'], where='ITI')
-        self.add_ob(1, period=['fixation'], where='ITI')
-        self.add_ob(1, period=['decision'], where='ITI')
+        ob = self.view_ob(period='ITI')
+        ob[:] = 0
+        for p in ['fixation', 'decision']:
+            ob = self.view_ob(period=p)
+            ob[:] = 1
         # Set the correct response for the decision period
         self.set_groundtruth(0, period='ITI')
         self.set_groundtruth(1, period='fixation')
