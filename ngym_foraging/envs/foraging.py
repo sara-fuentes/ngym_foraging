@@ -77,9 +77,9 @@ class Foraging(ngym.TrialEnv):
 
         trial.update(kwargs)  # Update trial with any additional parameters
 
-        ground_truth =\
+        trial['ground_truth'] =\
             self.choices[np.where(np.max(trial['probs']) == trial['probs'])[0][0]]
-
+        
         # Define trial periods
         self.add_period(['ITI', 'fixation', 'decision'])
 
@@ -92,7 +92,8 @@ class Foraging(ngym.TrialEnv):
         # Set the correct response for the decision period
         self.set_groundtruth(0, period='ITI')
         self.set_groundtruth(1, period='fixation')
-        self.set_groundtruth(ground_truth, period='decision', where='choice')
+        self.set_groundtruth(trial['ground_truth'], period='decision',
+                             where='choice')
 
         return trial
 
