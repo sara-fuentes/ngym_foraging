@@ -87,7 +87,8 @@ NATIVE_ALLOW_LIST = [
     'ReachingDelayResponse',
     'ReadySetGo',
     'SingleContextDecisionMaking',
-    'Foraging'
+    'Foraging',
+    'ForagingBlocks'
     # 'SpatialSuppressMotion',  # TODO: raises ModuleNotFound error since requires scipy, which is not in the requirements of ngym_foraging
     # 'ToneDetection'  # TODO: Temporary removing until bug fixed
 ]
