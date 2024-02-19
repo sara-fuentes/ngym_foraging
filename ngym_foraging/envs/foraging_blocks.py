@@ -140,5 +140,3 @@ class ForagingBlocks(ngym.TrialEnv):
                 reward += (self.rng.random() < prob) * self.rewards['correct']
 
         return self.ob_now, reward, False, {'new_trial': new_trial, 'gt': gt}
-
-
