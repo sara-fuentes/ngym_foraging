@@ -89,7 +89,7 @@ class ForagingBlocks(ngym.TrialEnv):
 
         trial['ground_truth'] =\
             self.choices[np.where(np.max(trial['probs']) == trial['probs'])[0][0]]
-        
+
         # Define trial periods
         self.add_period(['ITI', 'fixation', 'decision'])
 
@@ -123,7 +123,7 @@ class ForagingBlocks(ngym.TrialEnv):
         gt = self.gt_now
         # observations
         if self.in_period('ITI'):
-            if action != 0:  # action = 0 means fixating
+            if action != 0:  # action = 0 means no-action
                 new_trial = self.abort
                 reward += self.rewards['abort']
         elif self.in_period('fixation'):
