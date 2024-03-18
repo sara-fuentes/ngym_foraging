@@ -18,7 +18,11 @@ class PassAction(Wrapper):
         super().__init__(env)
         self.env = env
         # TODO: This is not adding one-hot
-        env_oss = env.observation_space.shape[0]
+        if isinstance(env.observation_space, spaces.Discrete):
+            num_inputs = env.observation_space.n
+        else:
+            num_inputs = env.observation_space.shape[0]
+        env_oss = num_inputs
         self.observation_space = spaces.Box(-np.inf, np.inf,
                                             shape=(env_oss+1,),
                                             dtype=np.float32)
